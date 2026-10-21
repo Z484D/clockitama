@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" class="h-full bg-commie-beige font-yuji select-none">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./icon/favicon.ico" />
+    <link href="./manifest.json?v=1" rel="manifest" />
+    <link href="./styles.css?v=1" rel="stylesheet" />
+    <script defer src="./main.js?v=1"></script>
+  </head>
+
+  <body class="h-full">
+    <main class="h-full flex flex-col justify-between sm:invisible">
+      <header class="flex justify-evenly mt-[4dvw] rotate-180">
+        <button
+          id="blue-left-card-button"
+          onclick="move('blueLeft')"
+          class="w-[43dvw] card-effects"
+        >
+          <img
+            id="blue-left-card-image"
+            src="./svg/cards/blank.svg"
+            draggable="false"
+            class="pointer-events-none"
+          />
+        </button>
+        <button
+          id="blue-right-card-button"
+          onclick="move('blueRight')"
+          class="w-[43dvw] card-effects"
+        >
+          <img
+            id="blue-right-card-image"
+            src="./svg/cards/blank.svg"
+            draggable="false"
+            class="pointer-events-none"
+          />
+        </button>
+      </header>
+      <time
+        id="blue-time"
+        class="text-center text-6xl rotate-180 transition duration-300"
+      ></time>
+      <article class="flex justify-between items-center">
+        <button
+          id="undo-button"
+          onpointerdown="undo()"
+          class="w-[12dvw] h-[12dvw] border-[0.7dvw] p-[0.7dvw] ml-[4dvw] button-effects"
+        >
+          <img
+            src="./svg/icons/arrow-uturn-left.svg"
+            draggable="false"
+            class="pointer-events-none"
+          />
+        </button>
+        <button id="center-card-button" class="w-[43dvw] transition">
+          <img
+            id="center-card-image"
+            src="./svg/cards/blank.svg"
+            draggable="false"
+            class="pointer-events-none"
+          />
+        </button>
+        <button
+          id="settings-button"
+          class="w-[12dvw] h-[12dvw] border-[0.7dvw] p-[0.7dvw] mr-[4dvw]"
+        >
+          <img
+            src="./svg/icons/cog-6-tooth.svg"
+            draggable="false"
+            class="pointer-events-none"
+          />
+        </button>
+      </article>
+      <time
+        id="red-time"
+        class="text-center text-6xl transition duration-300"
+      ></time>
+      <footer class="flex justify-evenly mb-[4dvw]">
+        <button
+          id="red-left-card-button"
+          onclick="move('redLeft')"
+          class="w-[43dvw] card-effects"
+        >
+          <img
+            id="red-left-card-image"
+            src="./svg/cards/blank.svg"
+            draggable="false"
+            class="pointer-events-none"
+          />
+        </button>
+        <button
+          id="red-right-card-button"
+          onclick="move('redRight')"
+          class="w-[43dvw] card-effects"
+        >
+          <img
+            id="red-right-card-image"
+            src="./svg/cards/blank.svg"
+            draggable="false"
+            class="pointer-events-none"
+          />
+        </button>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: YujiSyuku;
+  src: url(./fonts/YujiSyuku.ttf);
+}
+
+@theme {
+  --color-commie-red: #a1281c;
+  --color-commie-beige: #e8d6c0;
+  --color-commie-gray: #92938d;
+  --font-yuji: YujiSyuku;
+}
+
+.card-effects {
+  @apply mb-[1dvw] mr-[1dvw] shadow-[2dvw_2dvw_0_#000] not-disabled:active:shadow-none transition duration-75 not-disabled:active:translate-[2dvw];
+}
+
+.button-effects {
+  @apply shadow-[1dvw_1dvw_0_#000] disabled:shadow-none transition duration-75 disabled:translate-[1dvw];
+}

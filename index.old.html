@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/manifest.json" rel="manifest" />
+    <link href="/styles.css" rel="stylesheet" />
+    <script defer src="/alpine.min.js"></script>
+    <script defer>
+      // initialize alpine data store
+      document.addEventListener("alpine:init", () => {
+        Alpine.store("isUndoEnabled", true);
+        Alpine.store("undoPenaltyDuration", 2 * 60 * 1000);
+        Alpine.store("cards", {
+          base: [
+            {
+              name: "BOAR",
+              kanji: "猪",
+              image: "/svg/cards/base/boar.svg",
+              enabled: true,
+            },
+            {
+              name: "COBRA",
+              kanji: "蛇",
+              image: "/svg/cards/base/cobra.svg",
+              enabled: true,
+            },
+            {
+              name: "CRAB",
+              kanji: "蟹",
+              image: "/svg/cards/base/crab.svg",
+              enabled: true,
+            },
+            {
+              name: "CRANE",
+              kanji: "鶴",
+              image: "/svg/cards/base/crane.svg",
+              enabled: true,
+            },
+            {
+              name: "DRAGON",
+              kanji: "龍",
+              image: "/svg/cards/base/dragon.svg",
+              enabled: true,
+            },
+            {
+              name: "EEL",
+              kanji: "鰻",
+              image: "/svg/cards/base/eel.svg",
+              enabled: true,
+            },
+            {
+              name: "ELEPHANT",
+              kanji: "象",
+              image: "/svg/cards/base/elephant.svg",
+              enabled: true,
+            },
+            {
+              name: "FROG",
+              kanji: "蛙",
+              image: "/svg/cards/base/frog.svg",
+              enabled: true,
+            },
+            {
+              name: "GOOSE",
+              kanji: "鵞鳥",
+              image: "/svg/cards/base/goose.svg",
+              enabled: true,
+            },
+            {
+              name: "HORSE",
+              kanji: "馬",
+              image: "/svg/cards/base/horse.svg",
+              enabled: true,
+            },
+            {
+              name: "MANTIS",
+              kanji: "蟷螂",
+              image: "/svg/cards/base/mantis.svg",
+              enabled: true,
+            },
+            {
+              name: "MONKEY",
+              kanji: "猿",
+              image: "/svg/cards/base/monkey.svg",
+              enabled: true,
+            },
+            {
+              name: "OX",
+              kanji: "牛",
+              image: "/svg/cards/base/ox.svg",
+              enabled: true,
+            },
+            {
+              name: "RABBIT",
+              kanji: "兎",
+              image: "/svg/cards/base/rabbit.svg",
+              enabled: true,
+            },
+            {
+              name: "ROOSTER",
+              kanji: "鶏",
+              image: "/svg/cards/base/rooster.svg",
+              enabled: true,
+            },
+            {
+              name: "TIGER",
+              kanji: "虎",
+              image: "/svg/cards/base/tiger.svg",
+              enabled: true,
+            },
+          ],
+          promo: [
+            {
+              name: "CAT",
+              kanji: "猫",
+              image: "/svg/cards/promo/cat.svg",
+              enabled: true,
+            },
+            {
+              name: "CENTIPEDE",
+              kanji: "百足",
+              image: "/svg/cards/promo/centipede.svg",
+              enabled: true,
+            },
+            {
+              name: "CRICKET",
+              kanji: "蟋蟀",
+              image: "/svg/cards/promo/cricket.svg",
+              enabled: true,
+            },
+            {
+              name: "GOAT",
+              kanji: "山羊",
+              image: "/svg/cards/promo/goat.svg",
+              enabled: true,
+            },
+            {
+              name: "HORNET",
+              kanji: "雀蜂",
+              image: "/svg/cards/promo/hornet.svg",
+              enabled: true,
+            },
+            {
+              name: "LOBSTER",
+              kanji: "海老",
+              image: "/svg/cards/promo/lobster.svg",
+              enabled: true,
+            },
+            {
+              name: "MOTH",
+              kanji: "蛾",
+              image: "/svg/cards/promo/moth.svg",
+              enabled: true,
+            },
+            {
+              name: "NESSIE",
+              kanji: "N",
+              image: "/svg/cards/promo/nessie.svg",
+              enabled: true,
+            },
+            {
+              name: "SEROW",
+              kanji: "羚羊",
+              image: "/svg/cards/promo/serow.svg",
+              enabled: true,
+            },
+            {
+              name: "SHEEP",
+              kanji: "羊",
+              image: "/svg/cards/promo/sheep.svg",
+              enabled: true,
+            },
+            {
+              name: "STEER",
+              kanji: "去勢牛",
+              image: "/svg/cards/promo/steer.svg",
+              enabled: true,
+            },
+            {
+              name: "WHALE",
+              kanji: "鯨",
+              image: "/svg/cards/promo/whale.svg",
+              enabled: true,
+            },
+          ],
+          sensei: [
+            {
+              name: "BEAR",
+              kanji: "熊",
+              image: "/svg/cards/sensei/bear.svg",
+              enabled: true,
+            },
+            {
+              name: "DOG",
+              kanji: "犬",
+              image: "/svg/cards/sensei/dog.svg",
+              enabled: true,
+            },
+            {
+              name: "FOX",
+              kanji: "狐",
+              image: "/svg/cards/sensei/fox.svg",
+              enabled: true,
+            },
+            {
+              name: "GIRAFFE",
+              kanji: "麒麟",
+              image: "/svg/cards/sensei/giraffe.svg",
+              enabled: true,
+            },
+            {
+              name: "IGUANA",
+              kanji: "蜥蜴",
+              image: "/svg/cards/sensei/iguana.svg",
+              enabled: true,
+            },
+            {
+              name: "KIRIN",
+              kanji: "麒麟",
+              image: "/svg/cards/sensei/kirin.svg",
+              enabled: true,
+            },
+            {
+              name: "MOUSE",
+              kanji: "鼠",
+              image: "/svg/cards/sensei/mouse.svg",
+              enabled: true,
+            },
+            {
+              name: "OTTER",
+              kanji: "獺",
+              image: "/svg/cards/sensei/otter.svg",
+              enabled: true,
+            },
+            {
+              name: "PANDA",
+              kanji: "熊猫",
+              image: "/svg/cards/sensei/panda.svg",
+              enabled: true,
+            },
+            {
+              name: "PHOENIX",
+              kanji: "鳳凰",
+              image: "/svg/cards/sensei/phoenix.svg",
+              enabled: true,
+            },
+            {
+              name: "RAT",
+              kanji: "鼠",
+              image: "/svg/cards/sensei/rat.svg",
+              enabled: true,
+            },
+            {
+              name: "SABLE",
+              kanji: "黒貂",
+              image: "/svg/cards/sensei/sable.svg",
+              enabled: true,
+            },
+            {
+              name: "SEA SNAKE",
+              kanji: "海蛇",
+              image: "/svg/cards/sensei/seasnake.svg",
+              enabled: true,
+            },
+            {
+              name: "TANUKI",
+              kanji: "狸",
+              image: "/svg/cards/sensei/tanuki.svg",
+              enabled: true,
+            },
+            {
+              name: "TURTLE",
+              kanji: "亀",
+              image: "/svg/cards/sensei/turtle.svg",
+              enabled: true,
+            },
+            {
+              name: "VIPER",
+              kanji: "蝮",
+              image: "/svg/cards/sensei/viper.svg",
+              enabled: true,
+            },
+          ],
+        });
+      });
+
+      // all time intervals are stored and measured in milliseconds
+      function formatTime(ms) {
+        const second = 1000;
+        const minute = 60 * second;
+        const hour = 60 * minute;
+
+        const hours = Math.floor(ms / hour);
+        ms -= hours * hour;
+        const minutes = Math.floor(ms / minute);
+        ms -= minutes * minute;
+        const seconds = Math.floor(ms / second);
+        ms -= seconds * second;
+
+        return (
+          (hours > 0 ? String(hours).padStart(2, "0") + ":" : "") +
+          (String(minutes).padStart(2, "0") + ":") +
+          String(seconds).padStart(2, "0")
+        );
+      }
+    </script>
+  </head>
+
+  <body
+    x-data="{
+      shuffle: $store.cards.base
+        .concat($store.cards.promo)
+        .concat($store.cards.sensei)
+        .filter((card) => card.enabled)
+        .sort(() => 0.5 - Math.random()),
+    }"
+    class="bg-commie-beige font-yuji select-none"
+  >
+    <main
+      x-data="{
+        hasGameStarted: false,
+        hasGameEnded: false,
+        isGamePaused: false,
+        isRedPlayerTurn: true,
+        redPlayerTime: 15 * 60 * 1000,
+        redPlayerTimeIncrement: 10 * 1000,
+        bluePlayerTime: 15 * 60 * 1000,
+        bluePlayerTimeIncrement: 10 * 1000,
+        redPlayerLeftCard: shuffle[0],
+        redPlayerRightCard: shuffle[1],
+        centerCard: shuffle[2],
+        bluePlayerLeftCard: shuffle[3],
+        bluePlayerRightCard: shuffle[4],
+        // responsible for triggering the first rotation of the center elements when blue player makes the first move
+        didRedPlayerStartTheGame: true,
+        // keep last move card in memory to enable undo
+        lastMoveCard: undefined,
+        // keep last move timestamp to enable timekeeping
+        lastMoveTimestamp: undefined,
+        redPlayerDisplayTime: undefined,
+        bluePlayerDisplayTime: undefined,
+        // undo will refund the time spent on the current turn to the opponent
+        // while subtracting it from your time with additional penalty
+        currentTurnDuration: 0,
+        async move(card) {
+          this.currentTurnDuration = 0;
+          const timestamp = Date.now();
+          await new Promise((r) => setTimeout(r, 100)); // wait for the animation
+          if (this.hasGameStarted) {
+            if (this.isRedPlayerTurn) {
+              this.redPlayerTime -= timestamp - this.lastMoveTimestamp;
+              if (this.lastMoveCard !== undefined) {
+                this.redPlayerTime += this.redPlayerTimeIncrement;
+              }
+            } else {
+              this.bluePlayerTime -= timestamp - this.lastMoveTimestamp;
+              if (this.lastMoveCard !== undefined) {
+                this.bluePlayerTime += this.bluePlayerTimeIncrement;
+              }
+            }
+          }
+          this.redPlayerDisplayTime = this.redPlayerTime;
+          this.bluePlayerDisplayTime = this.bluePlayerTime;
+          if (!this.hasGameStarted && ['bluePlayerLeftCard', 'bluePlayerRightCard'].includes(card)) {
+            this.isRedPlayerTurn = false;
+            this.didRedPlayerStartTheGame = false;
+          }
+          this.hasGameStarted = true;
+          this[card] = [this.centerCard, this.centerCard = this[card]][0];
+          this.isRedPlayerTurn = !this.isRedPlayerTurn;
+          this.lastMoveTimestamp = timestamp;
+          this.lastMoveCard = card;
+        },
+        async undo() {
+          await new Promise((r) => setTimeout(r, 100)); // wait for the animation
+          if (this.isRedPlayerTurn) {
+            this.bluePlayerTime -= $store.undoPenaltyDuration;
+            this.bluePlayerDisplayTime = this.bluePlayerTime - this.currentTurnDuration;
+            this.redPlayerDisplayTime = this.redPlayerTime;
+          } else {
+            this.redPlayerTime = this.redPlayerTime - $store.undoPenaltyDuration;
+            this.redPlayerDisplayTime = this.redPlayerTime - this.currentTurnDuration;
+            this.bluePlayerDisplayTime = this.bluePlayerTime;
+          }
+          this[this.lastMoveCard] = [this.centerCard, this.centerCard = this[this.lastMoveCard]][0];
+          this.isRedPlayerTurn = !this.isRedPlayerTurn;
+          this.lastMoveCard = undefined;
+        },
+      }"
+      x-init="setInterval(() => {
+        if (!hasGameStarted || isGamePaused || hasGameEnded) return;
+        currentTurnDuration += 1000;
+        if (isRedPlayerTurn) {
+          redPlayerDisplayTime = redPlayerTime - currentTurnDuration;
+          if (redPlayerDisplayTime <= 0) {
+            hasGameEnded = true;
+          }
+        } else {
+          bluePlayerDisplayTime = bluePlayerTime - currentTurnDuration;
+          if (bluePlayerDisplayTime <= 0) {
+            hasGameEnded = true;
+          }
+        }
+      }, 1000)"
+      class="h-dvh flex flex-col justify-between sm:invisible"
+    >
+      <header class="flex justify-evenly mt-[4dvw] rotate-180">
+        <button
+          :disabled="(hasGameStarted && isRedPlayerTurn) || hasGameEnded"
+          @click="move('bluePlayerLeftCard')"
+          @pointerdown="timer = setTimeout(() => alert('Long press!'), 500)"
+          @pointerup="clearTimeout(timer)"
+          @pointercancel="clearTimeout(timer)"
+          @pointerleave="clearTimeout(timer)"
+          x-data="{ timer: null }"
+          class="w-[43dvw] card-effects"
+        >
+          <img
+            :src="bluePlayerLeftCard.image"
+            draggable="false"
+            class="pointer-events-none"
+          />
+        </button>
+        <button
+          :disabled="(hasGameStarted && isRedPlayerTurn) || hasGameEnded"
+          @click="move('bluePlayerRightCard')"
+          @pointerdown="timer = setTimeout(() => alert('Long press!'), 500)"
+          @pointerup="clearTimeout(timer)"
+          @pointercancel="clearTimeout(timer)"
+          @pointerleave="clearTimeout(timer)"
+          x-data="{ timer: null }"
+          class="w-[43dvw] card-effects"
+        >
+          <img
+            :src="bluePlayerRightCard.image"
+            draggable="false"
+            class="pointer-events-none"
+          />
+        </button>
+      </header>
+      <time
+        x-text="formatTime(bluePlayerDisplayTime)"
+        :class="hasGameStarted && !isRedPlayerTurn ? 'text-commie-red' : ''"
+        class="text-center text-6xl rotate-180 transition duration-300"
+      ></time>
+      <article class="flex justify-between">
+        <button
+          :disabled="
+            !$store.isUndoEnabled ||
+            lastMoveCard === undefined ||
+            (isRedPlayerTurn && bluePlayerTime < $store.undoPenaltyDuration + currentTurnDuration) ||
+            (!isRedPlayerTurn && redPlayerTime < $store.undoPenaltyDuration + currentTurnDuration)
+          "
+          @click="undo"
+        >
+          UNDO
+        </button>
+        <button
+          :disabled="hasGameStarted"
+          @pointerdown="timer = setTimeout(() => alert('Long press!'), 500)"
+          @pointerup="clearTimeout(timer)"
+          @pointercancel="clearTimeout(timer)"
+          @pointerleave="clearTimeout(timer)"
+          x-data="{ timer: null }"
+          :class="
+            hasGameStarted ?
+              isRedPlayerTurn ?
+                didRedPlayerStartTheGame ? '' : 'rotate-360'
+              : 'rotate-180'
+            : 'card-effects'
+          "
+          class="w-[43dvw] transition"
+        >
+          <img
+            :src="centerCard.image"
+            draggable="false"
+            class="pointer-events-none"
+          />
+        </button>
+        <button disabled>ODNU</button>
+      </article>
+      <time
+        x-text="formatTime(redPlayerDisplayTime)"
+        :class="hasGameStarted && isRedPlayerTurn ? 'text-commie-red' : ''"
+        class="text-center text-6xl transition duration-300"
+      ></time>
+      <footer class="flex justify-evenly mb-[4dvw]">
+        <button
+          :disabled="(hasGameStarted && !isRedPlayerTurn) || hasGameEnded"
+          @click="move('redPlayerLeftCard')"
+          @pointerdown="timer = setTimeout(() => alert('Long press!'), 500)"
+          @pointerup="clearTimeout(timer)"
+          @pointercancel="clearTimeout(timer)"
+          @pointerleave="clearTimeout(timer)"
+          x-data="{ timer: null }"
+          class="w-[43dvw] card-effects"
+        >
+          <img
+            :src="redPlayerLeftCard.image"
+            draggable="false"
+            class="pointer-events-none"
+          />
+        </button>
+        <button
+          :disabled="(hasGameStarted && !isRedPlayerTurn) || hasGameEnded"
+          @click="move('redPlayerRightCard')"
+          @pointerdown="timer = setTimeout(() => alert('Long press!'), 500)"
+          @pointerup="clearTimeout(timer)"
+          @pointercancel="clearTimeout(timer)"
+          @pointerleave="clearTimeout(timer)"
+          x-data="{ timer: null }"
+          class="w-[43dvw] card-effects"
+        >
+          <img
+            :src="redPlayerRightCard.image"
+            draggable="false"
+            class="pointer-events-none"
+          />
+        </button>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<svg viewBox="0 0 112 112" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .board { ry: 0 }
+    .cell { ry: 0 }
+    .grid { fill: #000000 }
+    .black-cell { fill: #e8d6c0 }
+    .white-cell { fill: #92938d }
+    .green-cell { fill: #a1281c }
+  </style>
+  <rect class="grid board" width="112" height="112"/>
+  <defs>
+    <pattern id="grid" width="22" height="22" patternUnits="userSpaceOnUse">
+      <rect class="black-cell cell" x="2" y="2" width="20" height="20"/>
+    </pattern>
+  </defs>
+  <rect width="112" height="112" fill="url(#grid)"/>
+  <rect class="white-cell cell" width="20" height="20" x="46" y="46"/>
+  <rect class="green-cell cell" width="20" height="20" x="68" y="24"/>
+  <rect class="green-cell cell" width="20" height="20" x="68" y="46"/>
+  <rect class="green-cell cell" width="20" height="20" x="68" y="68"/>
+</svg>

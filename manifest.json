@@ -1,0 +1,23 @@
+{
+  "name": "Clockitama",
+  "short_name": "Clockitama",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "black",
+  "background_color": "black",
+  "icons": [
+    {
+      "src": "./icon/bolt_48.png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "./icon/bolt_96.png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "./icon/bolt_144.png",
+      "sizes": "144x144"
+    }
+  ]
+}
